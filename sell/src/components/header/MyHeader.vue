@@ -171,7 +171,6 @@
                 margin-left :10px
                 line-height :24px
                 font-size :10px
-
     .bulletin-wrapper
         position :relative
         height :28px
