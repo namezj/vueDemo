@@ -109,7 +109,7 @@
             display:inline-block
             vertical-align :top
             img
-            border-radius :2px
+              border-radius :2px
         .content
             display :inline-block
             margin-left :16px
@@ -127,8 +127,6 @@
                     margin-left 6px
                     font-size :16px
                     line-height 18px
-
-
             .description
                 margin-bottom :10px
                 line-height :12px
