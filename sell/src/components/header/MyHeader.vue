@@ -95,7 +95,8 @@
 </script>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
-    @import "../../common/stylus/mixin.styl"
+@import "../../common/stylus/mixin.styl"
+
 .header
     position :relative
     overflow :hidden
