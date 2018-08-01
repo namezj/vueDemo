@@ -32,17 +32,8 @@ export default {
               response=response.body;
               if(response.errno===ERR_OK){
                   this.seller=response.data
-                  console.log(this.seller)
               }
           })
-    /*this.axios.get('/api/seller').then((response)=>{
-        response=response.json();
-        console.log(response)
-        if(response.errno===ERR_OK){
-          this.seller=response.data;
-            console.log(this.seller)
-        }
-    });*/
   },
   components:{
       MyHeader
