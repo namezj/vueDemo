@@ -28,19 +28,23 @@
                                     <span class="now">￥{{food.price}}</span>
                                     <span class="old" v-show="food.oldPrice">￥{{food.oldPrice}}</span>
                                 </div>
+                                <div class="cartcontrol-wrapper">
+                                    <cartcontrol :food="food"></cartcontrol>
+                                </div>
                             </div>
                         </li>
                     </ul>
                 </li>
             </ul>
         </div>
-        <shopcart :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></shopcart>
+        <shopcart :select-foods="selectFoods" :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></shopcart>
     </div>
 </template>
 
 <script>
 import BScroll from 'better-scroll';
 import shopcart from '../shopcart/shopcart'
+import cartcontrol from '../cartcontrol/cartcontrol'
   const ERR_OK=0;
     export default {
       name: "goods",
@@ -57,7 +61,8 @@ import shopcart from '../shopcart/shopcart'
         };
       },
       components:{
-        shopcart
+        shopcart,
+        cartcontrol
       },
       computed:{//计算属性
         currentIndex(){
@@ -69,6 +74,17 @@ import shopcart from '../shopcart/shopcart'
             }
           }
           return 0;
+        },
+        selectFoods(){
+          let foods=[];
+          this.goods.forEach((good) => {
+            good.foods.forEach((food) => {
+              if (food.count) {
+                foods.push(food)
+              }
+            });
+          });
+          return foods
         }
       },
       created() {
@@ -87,6 +103,7 @@ import shopcart from '../shopcart/shopcart'
       },
       methods:{
         selectMenu(index,event){
+          //不是自己派生的不实现，解决pc页面时触发2次click事件
             if(!event._constructed){
               return
             }
@@ -99,6 +116,7 @@ import shopcart from '../shopcart/shopcart'
             click:true
           });
           this.foodsScroll=new BScroll(this.$refs.foodsWrapper,{
+            click:true,
             probeType:3
           });
           this.foodsScroll.on('scroll', (pos) => {
@@ -221,4 +239,8 @@ import shopcart from '../shopcart/shopcart'
                         text-decoration :line-through
                         font-size:10px
                         color:rgb(147,153,159)
+                .cartcontrol-wrapper
+                    position :absolute
+                    right :0
+                    bottom :12px
 </style>
