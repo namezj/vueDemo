@@ -2,7 +2,7 @@
     <div class="cartcontrol">
         <transition name="move">
             <div class="cart-decrease" v-show="food.count>0" @click="decreaseCart" transition="move">
-                <span class="inner icon-remove_circle_outline"></span>
+                <span class="inner inner_move icon-remove_circle_outline"></span>
             </div>
         </transition>
         <div class="cart-count" v-show="food.count>0">{{food.count}}</div>
@@ -10,35 +10,37 @@
     </div>
 </template>
 <script>
-    import Vue from 'vue'
+  import Vue from 'vue'
+
   export default {
     name: "cartcontrol",
-    props:{
-      food:{
-        type:Object
+    props: {
+      food: {
+        type: Object
       }
     },
-    created(){
+    created() {
 
     },
-    methods:{
-      addCart(event){
+    methods: {
+      addCart(event) {
         //不是自己派生的不实现，解决pc页面时触发2次click事件
-        if(!event._constructed){
+        if (!event._constructed) {
           return
         }
-        if(!this.food.count){
+        if (!this.food.count) {
           // this.food.count=1;通过这个set方法添加一个属性用户可以实时的观测到
-          Vue.set(this.food,'count',1);
-        }else{
+          Vue.set(this.food, 'count', 1);
+        } else {
           this.food.count++;
         }
+        this.$emit('cart-add', event.target); //添加这句，提交'cart-add'事情给父组件，第二个是要传递的参数
       },
-      decreaseCart(event){
-        if(!event._constructed){
+      decreaseCart(event) {
+        if (!event._constructed) {
           return
         }
-        if(this.food.count){
+        if (this.food.count) {
           this.food.count--;
         }
       }
@@ -51,15 +53,23 @@
     .cart-decrease
         display :inline-block
         padding:6px
-        transition :all 0.4s linear
+        opacity :1
+        transform :translate3d(0,0,0)
         .inner
             display :inline-block
             line-height :24px
             font-size :24px
             color:rgb(0,160,220)
+            transform :rotate(0)
+            transition :all 0.4s linear
+        &.move-enter-active, &.move-leave-active{
+            transition: all 0.4s linear
+        }
         &.move-enter,&.move-leave-to
             opacity :0
             transform :translate3d(24px,0,0)
+            .inner_move
+                transform :rotate(180deg)
     .cart-count
         display :inline-block
         vertical-align :top
