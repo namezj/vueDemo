@@ -246,16 +246,16 @@
                         color: #fff
         .ball-container
             .ball
-                position: fixed
-                left: 32px
-                bottom: 22px
-                z-index: 200
-                transition: all 0.4s cubic-bezier(0.49,-0.29,0.75,0.41)
+                position fixed
+                left 32px
+                bottom 22px
+                z-index 200
+                transition: all 0.6s cubic-bezier(0.49, -0.29, 0.75, 0.41)
                 .inner
-                    width: 16px
-                    height: 16px
-                    border-radius: 50%
-                    background: rgb(0, 160, 220)
+                    width 16px
+                    height 16px
+                    border-radius 50%
+                    background rgb(0, 160, 220)
                     transition: all 0.4s linear
 
 </style>
