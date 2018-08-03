@@ -12,6 +12,11 @@ export default new Router({
   linkActiveClass:'active',
   routes: [
     {
+      path: '/',
+      //重定向
+      redirect: '/goods',
+    },
+    {
       path: '/goods',
       name: 'goods',
       component: goods
