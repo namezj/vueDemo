@@ -34,8 +34,7 @@
                 <split></split>
                 <div class="rating">
                     <h1 class="title">商品评价</h1>
-                    <ratingselect :select-type="selectType" :only-content="onlyContent" :desc="desc"
-                                  :ratings="food.ratings"></ratingselect>
+                    <ratingselect :selectType="selectType" :onlyContent="onlyContent" :desc="desc" :ratings="food.ratings" v-on:ratingType-select="rateType" v-on:content-toggle="contentToggle"></ratingselect>
                     <div class="rating-wrapper">
                         <ul v-show="food.ratings && food.ratings.length">
                             <li v-show="needShow(rating.rateType,rating.text)" v-for="rating in food.ratings"
@@ -90,14 +89,6 @@
       cartcontrol,
       split,
       ratingselect
-    },
-    created(){
-      this.$on('ratingType-select',(type)=>{
-        this.rateType(type);
-      });
-      this.$on('content-toggle',(onlyContent)=>{
-        this.contentToggle(onlyContent);
-      });
     },
     methods: {
       show() {

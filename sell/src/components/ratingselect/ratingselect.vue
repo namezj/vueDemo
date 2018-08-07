@@ -10,7 +10,7 @@
                   :class="{'active':selectType===1}">{{desc.negative}}<span
                     class="count">{{negative.length}}</span></span>
         </div>
-        <div @click="toggleContent" class="switch" :class="{'on':onlyContent}">
+        <div @click="toggleContent(onlyContent,$event)" class="switch" :class="{'on':onlyContent}">
             <span class="icon-check_circle"></span>
             <span class="text">只看有内容的评价</span>
         </div>
@@ -24,12 +24,6 @@
   export default {
     name: "ratingselect",
     props: {
-      ratings: {
-        type: Array,
-        default() {
-          return [];
-        }
-      },
       selectType: {
         type: Number,
         default: ALL
@@ -47,6 +41,17 @@
             negative: '不满意'
           }
         }
+      },
+      ratings: {
+        type: Array,
+        default() {
+          return [];
+        }
+      }
+    },
+    data() {
+      return {
+        onlyText:""
       }
     },
     computed: {
@@ -55,7 +60,7 @@
           return rating.rateType === POSITIVE
         })
       },
-      negative(){
+      negative() {
         return this.ratings.filter((rating) => {
           return rating.rateType === NEGATIVE
         })
@@ -66,15 +71,14 @@
         if (!event._constructed) {
           return;
         }
-        this.selectType = type;
         this.$emit('ratingType-select', type); //添加这句，提交'cart-add'事情给父组件，第二个是要传递的参数
       },
-      toggleContent(event) {
+      toggleContent(onlyContent,event) {
         if (!event._constructed) {
           return;
         }
-        this.onlyContent = !this.onlyContent;
-        this.$emit('content-toggle', this.onlyContent);
+        this.onlyText = !onlyContent;
+        this.$emit('content-toggle', this.onlyText);
       }
     }
   }
