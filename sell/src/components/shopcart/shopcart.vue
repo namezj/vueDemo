@@ -273,7 +273,8 @@
                         top: 0
                         right: 0
                         width: 24px
-                        padding: 3px 0;
+                        height :16px
+                        line-height :16px
                         text-align: center
                         border-radius: 16px
                         font-size: 9px
@@ -286,8 +287,8 @@
                     vertical-align: top
                     line-height: 24px
                     margin-top: 12px
-                    box-sizing: border-box
                     padding-right: 12px
+                    box-sizing: border-box
                     border-right: 1px solid rgba(255, 255, 255, 0.1)
                     font-size: 16px
                     font-weight: 700
