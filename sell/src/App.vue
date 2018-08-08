@@ -12,7 +12,10 @@
                 <router-link to="/seller">商家</router-link>
             </div>
         </div>
-        <router-view :seller="seller"></router-view>
+        <keep-alive>
+            <router-view :seller="seller"></router-view>
+        </keep-alive>
+
     </div>
 </template>
 
@@ -41,7 +44,7 @@
           if (response.errno === ERR_OK) {
             // this.seller = response.data;
             //使用这种es6的方法可以不用覆盖seller原来的id值
-            this.seller=Object.assign({},this.seller,response.data);
+            this.seller = Object.assign({}, this.seller, response.data);
           }
         })
     },
