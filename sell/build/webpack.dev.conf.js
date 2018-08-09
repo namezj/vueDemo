@@ -11,14 +11,14 @@ const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 //模拟后台数据
 //第一步
-const express = require('express')
+/*const express = require('express')
 const app = express()//请求server
 var appData = require('../data.json')//加载本地数据文件
 var seller = appData.seller//获取对应的本地数据
 var goods = appData.goods
 var ratings = appData.ratings
 var apiRoutes = express.Router()
-app.use('/api', apiRoutes)//通过路由请求数据
+app.use('/api', apiRoutes)//通过路由请求数据*/
 
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
@@ -53,7 +53,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     watchOptions: {
       poll: config.dev.poll,
     },
-    //第二步找到devServer,在里面添加
+   /* //第二步找到devServer,在里面添加
     before(app) {
         app.get('/api/seller', (req, res) => {
             res.json({
@@ -74,7 +74,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
             })
         })
     }
-  },
+  },*/
   plugins: [
     new webpack.DefinePlugin({
       'process.env': require('../config/dev.env')
