@@ -60,6 +60,7 @@
   import split from '@/components/split/split';
   import ratingselect from '@/components/ratingselect/ratingselect';
   import {formatDate} from '@/common/js/date'
+  import {ratingsHttp} from '@/api/api'
 
   const ALL = 2;//所有的
   const ERR_OK = 0;
@@ -83,9 +84,9 @@
       }
     },
     created() {
-      this.$http.get('/api/ratings')
+      ratingsHttp('/api/ratings')
         .then((response) => {
-          response = response.body;
+          // response = response.body;
           if (response.errno === ERR_OK) {
             this.ratings = response.data;
             this.$nextTick(() => {

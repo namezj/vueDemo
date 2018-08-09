@@ -22,6 +22,7 @@
 <script>
   import MyHeader from './components/header/MyHeader'
   import {urlParts} from './common/js/util'
+  import {sellerHttp} from './api/api'
 
   const ERR_OK = 0;
   export default {
@@ -38,9 +39,9 @@
       }
     },
     created() {
-      this.$http.get('/api/seller?id=' + this.seller.id)
+      sellerHttp({id: this.seller.id})
         .then((response) => {
-          response = response.body;
+          // response = response.body;
           if (response.errno === ERR_OK) {
             // this.seller = response.data;
             //使用这种es6的方法可以不用覆盖seller原来的id值

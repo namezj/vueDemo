@@ -49,6 +49,7 @@
   import shopcart from '../shopcart/shopcart'
   import cartcontrol from '../cartcontrol/cartcontrol'
   import food from '../food/food'
+  import{goodsHttp} from '../../api/api'
 
   const ERR_OK = 0;
   export default {
@@ -96,9 +97,9 @@
     },
     created() {
       this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee'];
-      this.$http.get('/api/goods')
+      goodsHttp('/api/goods')
         .then((response) => {
-          response = response.body;
+          // response = response.body;
           if (response.errno === ERR_OK) {
             this.goods = response.data;
             this.$nextTick(() => {
