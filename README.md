@@ -1,2 +1,2 @@
 # vueDemo
-一个仿写饿了吗的vue项目的demo
+一个使用vue-cli仿写饿了吗项目的demo
