@@ -97,8 +97,9 @@
     },
     created() {
       this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee'];
-      goodsHttp('/api/goods')
+      goodsHttp('/goods')
         .then((response) => {
+          // console.log(response)
           // response = response.body;
           if (response.errno === ERR_OK) {
             this.goods = response.data;

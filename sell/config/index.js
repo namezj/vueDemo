@@ -11,13 +11,19 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {//打包请求本地虚拟数据配置
-      '/api':{
+     /* '/api': {
         target: 'http://localhost:8088/api',
-        changeOrigin:true,
-        pathRewrite:{
-          '^/api':''
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        },*/
+      '/api': {
+          target: 'https://www.easy-mock.com/mock/5b6bb0d02681c8397f853248/api',
+          changeOrigin: true,
+          pathRewrite: {
+            '^/api': ''
+          }
         }
-      }
     },
 
     // Various Dev Server settings
@@ -28,7 +34,7 @@ module.exports = {
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
 
-    
+
     /**
      * Source Maps
      */

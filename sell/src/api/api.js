@@ -1,7 +1,7 @@
 import axios from 'axios';
 import router from '@/router'
 
-let base = 'https://www.easy-mock.com/mock/5b6bb0d02681c8397f853248/api'
+// let base = 'https://www.easy-mock.com/mock/5b6bb0d02681c8397f853248/api'
 let token
 if (window.location.href.indexOf("token") != -1) {
   let category = window.location.href
@@ -59,15 +59,15 @@ $axios.interceptors.response.use(
 
 //获取商家信息
 export const sellerHttp = params => {
-  return axios.get(`${base}/seller`, {params: params}).then(res => res.data);
+  return axios.get(`/api/seller`, {params: params}).then(res => res.data);
 }
 //获取商品信息
 export const goodsHttp = params => {
-  return axios.get(`${base}/goods`, {params: params}).then(res => res.data);
+  return axios.get(`/api/goods`, {params: params}).then(res => res.data);
 }
 //获取评价信息
 export const ratingsHttp = params => {
-  return axios.get(`${base}/ratings`, {params: params}).then(res => res.data);
+  return axios.get(`/api/ratings`, {params: params}).then(res => res.data);
 }
 /*//发送验证码
 export const sendCodes = params => {
